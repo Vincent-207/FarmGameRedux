@@ -1,11 +1,23 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 public class PlacingManager : MonoBehaviour
 {
-    public Transform hoverIcon;
+    [SerializeField] Transform hoverIcon;
     Rigidbody2D rb;
     Vector2 offset;
+    [SerializeField]
+    InputActionReference place;
+    void OnEnable()
+    {
+        place.action.started += UseItem;
+
+    }
+    void OnDisable()
+    {
+        place.action.started -= UseItem;
+    }
     void Start()
     {
         rb = GetComponentInParent<Rigidbody2D>();
@@ -28,5 +40,18 @@ public class PlacingManager : MonoBehaviour
         // snap to planting grid
         Vector3Int gridPos = Vector3Int.FloorToInt(hoverIcon.position);
         hoverIcon.position = gridPos;
+    }
+
+    void UseItem(InputAction.CallbackContext context)
+    {
+        Item currentItem = Inventory.instance.GetCurrentItem();
+        if(currentItem == null) Debug.Log("Current item is null!");
+        if(currentItem == null) return;
+        Vector2Int hoveredPos = Vector2Int.CeilToInt(hoverIcon.position);
+        if(currentItem.IsItemUseable(hoveredPos))
+        {
+            currentItem.ConsumeItem(hoveredPos);
+
+        }
     }
 }
