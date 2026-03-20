@@ -20,6 +20,8 @@ public class Clock : MonoBehaviour
             return;
         }
         instance = this;
+
+        tickEvent ??= new();
     }
     void Update()
     {
@@ -42,7 +44,7 @@ public class Clock : MonoBehaviour
 
     void DoTick()
     {
-        Debug.Log("Ticking!");
+        // Debug.Log("Ticking!");
         tickEvent.Invoke();
     }
 

@@ -33,7 +33,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
     public virtual bool IsItemUseable(Vector2Int gridPos)
     {
         bool IsInGrid = GridManager.instance.IsInGrid(gridPos);
-        Debug.Log("ItemIsEvalating: " + IsInGrid);
+        // Debug.Log("ItemIsEvalating: " + IsInGrid);
         return IsInGrid;
     }
 
