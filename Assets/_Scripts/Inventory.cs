@@ -6,6 +6,9 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
     [SerializeField]
     Item currentSelectedItem;
+    [SerializeField] GameObject[] cropPrefabs;
+    [SerializeField] GameObject inventoryHolder;
+
     void Awake()
     {
         if(instance != null && instance != this)
@@ -34,4 +37,27 @@ public class Inventory : MonoBehaviour
     {
         return currentSelectedItem;
     }
+
+    public void AddCrop(PlantType cropType)
+    {
+        Debug.Log("IMPLEMENT!");
+        Crop[] crops = inventoryHolder.GetComponentsInChildren<Crop>();
+        foreach(Crop crop in crops)
+        {
+            if(crop.IsCropOfType(cropType))
+            {
+                Debug.Log("Found crop, incrementing!");
+                crop.Increment();
+                return;
+            }
+        }
+
+        // No matching crop items, need to instantiate new one.
+        Debug.Log("Instantiating new crop!");
+        Crop newCrop = Instantiate(cropPrefabs[(int) cropType], inventoryHolder.transform).GetComponent<Crop>();
+        newCrop.amount = 1;
+    }
+
+
+
 }

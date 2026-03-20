@@ -38,7 +38,7 @@ public class PlacingManager : MonoBehaviour
         hoverIcon.localPosition = offset;
 
         // snap to planting grid
-        Vector3Int gridPos = Vector3Int.FloorToInt(hoverIcon.position);
+        Vector3Int gridPos = Vector3Int.FloorToInt(hoverIcon.position + new Vector3(0.5f, 0f));
         hoverIcon.position = gridPos;
     }
 

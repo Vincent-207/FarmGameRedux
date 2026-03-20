@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Plant : MonoBehaviour
 {
+    [SerializeField]
     PlantType plantType;
     [SerializeField]
     int growthStage, maxGrowthStage;
@@ -17,7 +18,7 @@ public class Plant : MonoBehaviour
     [SerializeField] Sprite[] DiseaseSprites;
     
     [SerializeField] float DiseaseChance = 0.3f;
-
+    bool isWet = false;
     public Disease GetDisease()
     {
         return disease;
@@ -35,19 +36,20 @@ public class Plant : MonoBehaviour
         Clock.instance.tickEvent.RemoveListener(Tick);
         
     }
+    public bool isHarvestable()
+    {
+        return growthStage == maxGrowthStage;
+    }
     
     public void Tick()
     {
         if(disease != Disease.None)
         {
-            Debug.Log("going to die: disease type - " + disease);
-            Debug.Break();
             Die();
             return;       
         }
 
         HandleDiseaseGeneration();
-
         IncrementStage();
     }
 
@@ -55,8 +57,6 @@ public class Plant : MonoBehaviour
     {
         float chance = Random.Range(0f, 1f);
         bool spawnDisease = DiseaseChance > chance;
-        Debug.Log("chance: " + chance);
-        Debug.Log("Spawn diseases: " + spawnDisease);
         if(spawnDisease) 
         {
             disease = (Disease) Random.Range(1, System.Enum.GetValues(typeof(Disease)).Length);
@@ -87,8 +87,13 @@ public class Plant : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Dieing!");
+        
         Destroy(gameObject);
+    }
+
+    public PlantType GetPlantType()
+    {
+        return plantType;
     }
 }
 

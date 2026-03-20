@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Item : MonoBehaviour, IPointerClickHandler
 {
     Image hoverBackground;
-    [SerializeField] int amount;
+    [SerializeField] internal int amount;
     [SerializeField] TMP_Text amountText;
     void Start()
     {
@@ -58,7 +58,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
         UpdateAmountText();
     }
 
-    void UpdateAmountText()
+    internal virtual void UpdateAmountText()
     {
         amountText.text = "x" + amount.ToString("D2");
     }

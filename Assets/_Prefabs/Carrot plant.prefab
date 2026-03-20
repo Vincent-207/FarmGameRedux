@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12713d2c9fc8de041a08126d6ff88177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Plant
+  plantType: 1
   growthStage: 0
   maxGrowthStage: 2
   growthSprites:
