@@ -9,10 +9,8 @@ public class Crop : Item
     {
         return cropType == inputType;
     }
-
-    public void Increment()
+    public override bool IsItemUseable(Vector2Int gridPos)
     {
-        amount++;
-        UpdateAmountText();
+        return false;
     }
 }

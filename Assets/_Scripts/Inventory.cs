@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     Item currentSelectedItem;
     [SerializeField] GameObject[] cropPrefabs;
+    [SerializeField] GameObject[] curePrefabs;
     [SerializeField] GameObject inventoryHolder;
 
     void Awake()
@@ -56,6 +57,22 @@ public class Inventory : MonoBehaviour
         Debug.Log("Instantiating new crop!");
         Crop newCrop = Instantiate(cropPrefabs[(int) cropType], inventoryHolder.transform).GetComponent<Crop>();
         newCrop.amount = 1;
+    }
+
+    public void AddCure(Disease diseaseType)
+    {
+        Cure[] cures = inventoryHolder.GetComponentsInChildren<Cure>();
+        foreach(Cure cure in cures)
+        {
+            Debug.Log("Checking: " + cure.gameObject.name);
+            if(cure.isOfCureType(diseaseType))
+            {
+                cure.Increment();
+                return;
+            }
+        }
+        Cure newCure = Instantiate(curePrefabs[(int) diseaseType], inventoryHolder.transform).GetComponent<Cure>();
+        newCure.amount = 1;
     }
 
 

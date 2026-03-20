@@ -58,6 +58,12 @@ public class Item : MonoBehaviour, IPointerClickHandler
         UpdateAmountText();
     }
 
+    public void Increment()
+    {
+        amount++;
+        UpdateAmountText();
+    }
+
     internal virtual void UpdateAmountText()
     {
         amountText.text = "x" + amount.ToString("D2");

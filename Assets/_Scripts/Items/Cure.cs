@@ -20,4 +20,15 @@ public class Cure : Item
         if(plant.GetDisease() == cureType) return true;
         return false;
     }
+
+    public bool isOfCureType(Disease inputType)
+    {
+        Debug.Log("My cure: " + cureType);
+        Debug.Log("Input type: " + inputType);
+        bool matches = cureType == inputType;
+        Debug.Log("Matches: " + matches);
+        return cureType == inputType;
+    }
+
+    
 }

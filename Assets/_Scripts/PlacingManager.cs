@@ -45,7 +45,7 @@ public class PlacingManager : MonoBehaviour
     void UseItem(InputAction.CallbackContext context)
     {
         Item currentItem = Inventory.instance.GetCurrentItem();
-        if(currentItem == null) Debug.Log("Current item is null!");
+        // if(currentItem == null) Debug.Log("Current item is null!");
         if(currentItem == null) return;
         Vector2Int hoveredPos = Vector2Int.CeilToInt(hoverIcon.position);
         if(currentItem.IsItemUseable(hoveredPos))
