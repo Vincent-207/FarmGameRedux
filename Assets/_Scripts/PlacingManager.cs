@@ -5,10 +5,13 @@ using UnityEngine.Rendering;
 public class PlacingManager : MonoBehaviour
 {
     [SerializeField] Transform hoverIcon;
+    SpriteRenderer hoverIconRenderer;
     Rigidbody2D rb;
     Vector2 offset;
     [SerializeField]
     InputActionReference place;
+    public Color previewColor, hideColor;
+    
     void OnEnable()
     {
         place.action.started += UseItem;
@@ -20,6 +23,7 @@ public class PlacingManager : MonoBehaviour
     }
     void Start()
     {
+        hoverIconRenderer = hoverIcon.GetComponent<SpriteRenderer>();
         rb = GetComponentInParent<Rigidbody2D>();
     }
     void Update()
@@ -40,6 +44,12 @@ public class PlacingManager : MonoBehaviour
         // snap to planting grid
         Vector3Int gridPos = Vector3Int.FloorToInt(hoverIcon.position + new Vector3(0.5f, 0f));
         hoverIcon.position = gridPos;
+
+        if(GridManager.instance.IsInGrid(hoverIcon.position))
+        {
+            hoverIconRenderer.color = previewColor;
+        }
+        else hoverIconRenderer.color = hideColor;
     }
 
     void UseItem(InputAction.CallbackContext context)

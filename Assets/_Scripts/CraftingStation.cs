@@ -7,24 +7,9 @@ public class CraftingStation : MonoBehaviour
 {
     [SerializeField] Disease cureType;
     [SerializeField] InputActionReference craftingInput;
-    bool isPlayerAtStation = false;
     [SerializeField] float craftingDuration;
     [SerializeField] AmountBar amountBar;
     [SerializeField] PlayerDetector playerDetector;
-    void Start()
-    {
-        playerDetector.PlayerEnter.AddListener(OnPlayerEnter);
-        playerDetector.PlayerExit.AddListener(OnPlayerExit);
-    }
-    void OnPlayerEnter()
-    {
-        isPlayerAtStation = true;
-    }
-
-    void OnPlayerExit()
-    {
-        isPlayerAtStation = false;
-    }
 
     void OnEnable()
     {
@@ -38,7 +23,11 @@ public class CraftingStation : MonoBehaviour
 
     void Craft(InputAction.CallbackContext context)
     {
-        StartCoroutine(Craft(craftingDuration));
+        if(playerDetector.GetIsPlayerClose())
+        {
+            StartCoroutine(Craft(craftingDuration));
+            
+        }
     }
 
     IEnumerator Craft(float duration)
@@ -50,7 +39,7 @@ public class CraftingStation : MonoBehaviour
             elapsedTime += Time.deltaTime;
             amountBar.SetProportion(elapsedTime / duration);
 
-            if(!craftingInput.action.IsPressed())
+            if(!craftingInput.action.IsPressed() || !playerDetector.GetIsPlayerClose())
             {
                 // Cancel crafting
                 amountBar.gameObject.SetActive(false);

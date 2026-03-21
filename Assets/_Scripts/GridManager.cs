@@ -21,7 +21,7 @@ public class GridManager : MonoBehaviour
     void Start()
     {
         plants = new Plant[width, height];
-        InstantiateGrid();   
+        // InstantiateGrid();   
     }
 
     void InstantiateGrid()

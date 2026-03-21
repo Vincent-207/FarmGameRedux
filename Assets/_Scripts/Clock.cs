@@ -10,8 +10,9 @@ public class Clock : MonoBehaviour
     float currentTime;
     bool hourHasBeenTicked = false;
     [SerializeField] float timeRate = 1f;
-    public UnityEvent tickEvent;
+    public UnityEvent tickEvent, dayEndEvent;
     public static Clock instance;
+    public bool paused = false;
     void Awake()
     {
         if(instance != null && instance != this)
@@ -25,6 +26,7 @@ public class Clock : MonoBehaviour
     }
     void Update()
     {
+        if(paused) return;
         HandleTicking();
         currentTime += Time.deltaTime * timeRate;
 
@@ -39,7 +41,17 @@ public class Clock : MonoBehaviour
         if(currentMinutes > previousMinutes)
         {
             DoTick();
+            if(currentMinutes % 24 == 0 && currentMinutes != 0)
+            {
+                DoDayTick();
+            }
         }
+
+    }
+
+    void DoDayTick()
+    {
+        dayEndEvent.Invoke();
     }
 
     void DoTick()

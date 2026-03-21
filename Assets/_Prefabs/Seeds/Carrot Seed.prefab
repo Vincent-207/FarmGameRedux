@@ -148,4 +148,4 @@ MonoBehaviour:
   amount: 4
   amountText: {fileID: 652574926172894173}
   plantType: 1
-  PlantPrefab: {fileID: 7826835712800072966, guid: 32d412455dae188469090f50461931b9, type: 3}
+  PlantPrefab: {fileID: 7826835712800072966, guid: 4df006d76a9ccc14694bb58a833638f5, type: 3}
