@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
     Image hoverBackground;
     [SerializeField] internal int amount;
     [SerializeField] TMP_Text amountText;
+    [SerializeField] internal AudioResource itemUseSound;
     void Start()
     {
         hoverBackground = GetComponent<Image>();
@@ -42,7 +44,12 @@ public class Item : MonoBehaviour, IPointerClickHandler
         // Do item use stuff.
 
         DecrementAmount();
+        PlayUseSound();
+    }
 
+    internal void PlayUseSound()
+    {
+        if(itemUseSound != null) AudioOneShotManager.PlayFromResource(itemUseSound);
     }
 
     void DecrementAmount()

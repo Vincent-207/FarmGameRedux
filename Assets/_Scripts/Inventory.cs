@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] GameObject[] curePrefabs;
     [SerializeField] GameObject[] seedPrefabs;
     [SerializeField] GameObject inventoryHolder;
+
     public GameObject GetInventoryHolder()
     {
         return inventoryHolder;

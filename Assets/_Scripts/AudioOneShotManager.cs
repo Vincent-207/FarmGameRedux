@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.Audio;
 [RequireComponent(typeof(AudioSource))]
 public class AudioOneShotManager : MonoBehaviour
 {
@@ -23,6 +24,12 @@ public class AudioOneShotManager : MonoBehaviour
     public static void PlayOneShot(AudioClip audioClip)
     {
         instance.audioSource.PlayOneShot(audioClip);
+    }
+
+    public static void PlayFromResource(AudioResource resource)
+    {
+        instance.audioSource.resource = resource;
+        instance.audioSource.Play();
     }
 
     

@@ -10,6 +10,8 @@ public class CraftingStation : MonoBehaviour
     [SerializeField] float craftingDuration;
     [SerializeField] AmountBar amountBar;
     [SerializeField] PlayerDetector playerDetector;
+    [SerializeField]
+    AudioClip craftingSound;
 
     void OnEnable()
     {
@@ -52,6 +54,7 @@ public class CraftingStation : MonoBehaviour
         // Craft and add
         Inventory.instance.AddCure(cureType);
         amountBar.gameObject.SetActive(false);
+        AudioOneShotManager.PlayOneShot(craftingSound);
 
     }
 }

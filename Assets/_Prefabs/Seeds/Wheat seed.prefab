@@ -147,5 +147,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   amount: 4
   amountText: {fileID: 652574926172894173}
+  itemUseSound: {fileID: 6418180475301049370, guid: f02cc22561e309448be408542bc85033, type: 2}
   plantType: 0
   PlantPrefab: {fileID: 4858574178120864055, guid: 1243db737e3ef284cb63b3a6c35b7c7a, type: 3}

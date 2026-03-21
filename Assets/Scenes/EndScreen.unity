@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab28311a61c96a743b4d6e0d8641c200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  display: {fileID: 0}
+  display: {fileID: 26592064}
   DaysSurvivedParam: 
 --- !u!114 &26592064
 MonoBehaviour:

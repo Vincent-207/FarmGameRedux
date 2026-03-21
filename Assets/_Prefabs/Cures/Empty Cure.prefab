@@ -167,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cure
   amount: 1
   amountText: {fileID: 1526682108629774232}
+  itemUseSound: {fileID: 6418180475301049370, guid: 5177d3d9100b9954d93531f880fce6dd, type: 2}
   cureType: 0
 --- !u!1 &5549819434729410095
 GameObject:

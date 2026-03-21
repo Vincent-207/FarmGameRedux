@@ -7,7 +7,7 @@ public class endscreenManager : MonoBehaviour
 {
     [SerializeField]
     TMP_Text display;
-    [SerializeField] String DaysSurvivedParam;
+    String DaysSurvivedParam = "LastDaySurvived";
 
     void OnEnable()
     {

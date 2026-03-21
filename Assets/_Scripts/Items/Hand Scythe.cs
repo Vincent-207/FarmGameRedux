@@ -29,6 +29,7 @@ public class HandScythe : Item
         // Debug.Log("Added crop");
         Destroy(plant.gameObject);
         // Debug.Log("destroyed plant");
+        PlayUseSound();
     }
     internal override void UpdateAmountText()
     {

@@ -91,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HandScythe
   amount: 1
   amountText: {fileID: 0}
+  itemUseSound: {fileID: 8300000, guid: 9bd92ab1cac02db479587ac9ac94aec0, type: 3}
 --- !u!1 &6959002231259130640
 GameObject:
   m_ObjectHideFlags: 0

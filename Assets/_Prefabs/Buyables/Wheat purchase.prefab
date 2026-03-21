@@ -167,9 +167,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f1f8f18f48cd84dac40e2152b7c142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SeedPurchaseable
-  cost: 1
+  cost: 5
   plantType: 0
   CostDisplay: {fileID: 8579201288108333146}
+  buySound: {fileID: 8300000, guid: 281a23f6814d4914cbf806eac4bdb0b1, type: 3}
+  cancelSound: {fileID: 8300000, guid: 372b717e965fca347aaaed8127d29a4b, type: 3}
 --- !u!1 &4164160975984240685
 GameObject:
   m_ObjectHideFlags: 0
