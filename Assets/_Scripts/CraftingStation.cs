@@ -10,15 +10,20 @@ public class CraftingStation : MonoBehaviour
     bool isPlayerAtStation = false;
     [SerializeField] float craftingDuration;
     [SerializeField] AmountBar amountBar;
-    
-    void OnTriggerEnter2D(Collider2D collider)
+    [SerializeField] PlayerDetector playerDetector;
+    void Start()
     {
-        if(collider.CompareTag("Player")) isPlayerAtStation = true;
+        playerDetector.PlayerEnter.AddListener(OnPlayerEnter);
+        playerDetector.PlayerExit.AddListener(OnPlayerExit);
+    }
+    void OnPlayerEnter()
+    {
+        isPlayerAtStation = true;
     }
 
-    void OnTriggerExit2D(Collider2D collider)
+    void OnPlayerExit()
     {
-        if(collider.CompareTag("Player")) isPlayerAtStation = false;
+        isPlayerAtStation = false;
     }
 
     void OnEnable()

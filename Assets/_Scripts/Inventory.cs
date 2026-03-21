@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
     Item currentSelectedItem;
     [SerializeField] GameObject[] cropPrefabs;
     [SerializeField] GameObject[] curePrefabs;
+    [SerializeField] GameObject[] seedPrefabs;
     [SerializeField] GameObject inventoryHolder;
 
     void Awake()
@@ -75,6 +76,22 @@ public class Inventory : MonoBehaviour
         newCure.amount = 1;
     }
 
+
+    public void AddSeed(PlantType seedType)
+    {
+        Seed[] seeds = inventoryHolder.GetComponentsInChildren<Seed>();
+        foreach(Seed seed in seeds)
+        {
+            if(seed.isOfSeedType(seedType))
+            {
+                seed.Increment();
+                return;
+            }
+        }
+
+        Seed newSeed = Instantiate(seedPrefabs[(int) seedType], inventoryHolder.transform).GetComponent<Seed>();
+        newSeed.amount = 1;
+    }
 
 
 }

@@ -22,6 +22,11 @@ public class Seed : Item
         return true;
 
     }
+
+    public bool isOfSeedType(PlantType seedType)
+    {
+        return seedType == plantType;
+    }
 }
 
 
