@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Crop
   amount: 1
   amountText: {fileID: 9030441687173890888}
+  value: 5
   cropType: 0
 --- !u!1 &2223219909203405321
 GameObject:

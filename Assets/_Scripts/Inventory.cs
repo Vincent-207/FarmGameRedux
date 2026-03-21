@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -10,7 +11,10 @@ public class Inventory : MonoBehaviour
     [SerializeField] GameObject[] curePrefabs;
     [SerializeField] GameObject[] seedPrefabs;
     [SerializeField] GameObject inventoryHolder;
-
+    public GameObject GetInventoryHolder()
+    {
+        return inventoryHolder;
+    }
     void Awake()
     {
         if(instance != null && instance != this)
